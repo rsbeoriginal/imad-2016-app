@@ -71,7 +71,7 @@ function createTemplate (data) {
                 <ul id="list-comment" class="list-group">
                     <div class="list-group-item white row" style="margin:3%;background-color:#f2f2f2;border-radius:5px">
                         <div class="col-md-1">
-                            <img src="res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%">
+                            <img src="/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%">
                         </div>
                         <div class="col-md-5" style="margin-left:1%">
                             <h5><strong>Rishi Sharma</strong></h4>
