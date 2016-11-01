@@ -48,25 +48,8 @@
                 <video src="res/video.mp4"  autoplay="true" width="700px" height="480px" controls="true" style="background-color:black;"></video>
             </div>
             -->
-            <ul class="list-group">
-                <div class="margin-top-bottom white shadow list-group-item" style="border-radius:4px;padding:1%">
-                    <h3><strong>Material Design</strong></h3>
-                    <p><h4><small>Material design is a comprehensive guide for visual, motion, and interaction design across platforms and devices. Android now includes support for material design apps. Material design is a comprehensive guide for visual, motion, and interaction design across platforms and devices. Android now includes support for material design apps. </small></h4></p>
-                    <div><h5><small>Comments</small></h5>
-                    </div>
-                </div>
-                <div class="margin-top-bottom white shadow list-group-item" style="border-radius:4px;padding:1%">
-                    <h3><strong>Material Design</strong></h3>
-                    <p><h4><small>Material design is a comprehensive guide for visual, motion, and interaction design across platforms and devices. Android now includes support for material design apps. Material design is a comprehensive guide for visual, motion, and interaction design across platforms and devices. Android now includes support for material design apps. </small></h4></p>
-                    <div><h5><small>Comments</small></h5>
-                    </div>
-                </div>
-                <div class="margin-top-bottom white shadow list-group-item" style="border-radius:4px;padding:1%">
-                    <h3><strong>Material Design</strong></h3>
-                    <p><h4><small>Material design is a comprehensive guide for visual, motion, and interaction design across platforms and devices. Android now includes support for material design apps. Material design is a comprehensive guide for visual, motion, and interaction design across platforms and devices. Android now includes support for material design apps. </small></h4></p>
-                    <div><h5><small>Comments</small></h5>
-                    </div>
-                </div>
+            <ul id="list-article" class="list-group">
+                
             </ul>
         </div>
         
@@ -161,6 +144,7 @@
                 </div>`;
         }
             console.log(out);
+            document.getElementById("list-article").innerHTML=out;
     }
     </script>
   </body>
