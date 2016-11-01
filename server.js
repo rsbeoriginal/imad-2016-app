@@ -48,6 +48,10 @@ app.get('/blog', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog', 'index.html'));
 });
 
+app.get('/blog/article/:id', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui/blog', 'index.html'));
+});
+
 app.get('/ui/blog/css/bootstrap.min.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog/css', 'bootstrap.min.css'));
 });
