@@ -143,12 +143,13 @@
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
             console.log(this.responseText);
+            listParser(myArr);
             }
         };
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
         
-    function myFunction(arr) {
+    function listParser(arr) {
         var out = "";
         var i;
         for(i = 0; i < arr.length; i++) {
@@ -160,6 +161,7 @@
                 </div>`;
         }
             console.log(out);
+    }
     </script>
   </body>
 </html>
