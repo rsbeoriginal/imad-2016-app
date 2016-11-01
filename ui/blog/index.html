@@ -137,7 +137,7 @@
         var i;
         for(i = 0; i < arr.length; i++) {
             out += `<div class="margin-top-bottom white shadow list-group-item" style="border-radius:4px;padding:1%">
-                    <h3><strong>`+arr[i].title+`</strong></h3>
+                    <a href="article/${arr.id}"><h3><strong>`+arr[i].title+`</strong></h3></a>
                     <p><h4><small>`+arr[i].body+` </small></h4></p>
                     <div><h5><small>`+arr[i].likes+` Likes | `+arr[i].dislikes+` Dislikes</small></h5>
                     </div>
