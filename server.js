@@ -135,11 +135,11 @@ app.get('/blog/article/:id', function (req, res) {
     if (err) {
         res.status(500).send(err.toString());
     } else {
-        if (result.rows.length === 0) {
+        //if (result.rows.length === 0) {
            // res.status(404).send('Article not found');
-        } else {
+        //} else {
             comments = result.rows;
-        }
+        //}
     }
   });
   pool.query("SELECT * FROM article WHERE id = $1", [req.params.id], function (err, result) {
