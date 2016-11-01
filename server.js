@@ -17,7 +17,7 @@ var config = {
 var pool = new Pool(config);
 
 app.get('/db', function (req, res) {
-  pool.query('SELECT * FROM article,user WHERE article.user_id=user.id;',function(err,result){
+  pool.query('SELECT * FROM article A,user U WHERE A.user_id=U.id;',function(err,result){
       if(err){
           res.status(500).send(err.toString());
       }else{
