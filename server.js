@@ -35,7 +35,7 @@ function createTemplate (data) {
     <title>Material Design</title>
 
     <!-- Bootstrap -->
-    <link href="../ui/blog/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ui/blog/css/bootstrap.min.css" rel="stylesheet">
     <link href="/ui/blog/css/style.css" rel="stylesheet">
   </head>
   <body>
