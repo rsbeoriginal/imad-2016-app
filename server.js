@@ -131,7 +131,7 @@ app.get('/blog', function (req, res) {
 
 app.get('/blog/article/:id', function (req, res) {
     var comments;
-    pool.query("SELECT * FROM comment WHERE id = $1", [req.params.id], function (err, result) {
+    pool.query("SELECT * FROM comment WHERE article_id = $1", [req.params.id], function (err, result) {
     if (err) {
         res.status(500).send(err.toString());
     } else {
