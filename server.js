@@ -17,12 +17,28 @@ var config = {
 var pool = new Pool(config);
 
 
-function createTemplate (data) {
+function createTemplate (data,comment) {
     var title = data.title;
     var body = data.body;
     var likes = data.likes;
     var dislikes =data.dislikes;
     
+    var commentTemplate="";
+    
+    var i;
+    for(i=0;i<comment.length;i++){
+        commentTemplate+=`
+        <div class="list-group-item white row" style="margin:3%;background-color:#f2f2f2;border-radius:5px">
+                        <div class="col-md-1">
+                            <img src="/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%">
+                        </div>
+                        <div class="col-md-5" style="margin-left:1%">
+                            <h5><strong>${comment[i].full_name}</strong></h4>
+                            <h4><small>${comment[i].comment}</small></h4>
+                        </div>
+                    </div>
+        `;
+    }
     
     var htmlTemplate = `
     <!DOCTYPE html>
@@ -69,15 +85,7 @@ function createTemplate (data) {
                 </div>
                 <!--Comments by users -->
                 <ul id="list-comment" class="list-group">
-                    <div class="list-group-item white row" style="margin:3%;background-color:#f2f2f2;border-radius:5px">
-                        <div class="col-md-1">
-                            <img src="/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%">
-                        </div>
-                        <div class="col-md-5" style="margin-left:1%">
-                            <h5><strong>Rishi Sharma</strong></h4>
-                            <h4><small>This is comment.This is comment.</small></h4>
-                        </div>
-                    </div>
+                    ${commentTemplate}
                 </ul>
             </div>
             
@@ -122,6 +130,18 @@ app.get('/blog', function (req, res) {
 });
 
 app.get('/blog/article/:id', function (req, res) {
+    var comments;
+    pool.query("SELECT * FROM comments WHERE id = $1", [req.params.id], function (err, result) {
+    if (err) {
+        res.status(500).send(err.toString());
+    } else {
+        if (result.rows.length === 0) {
+            res.status(404).send('Article not found');
+        } else {
+            comments = result.rows;
+        }
+    }
+  });
   pool.query("SELECT * FROM article WHERE id = $1", [req.params.id], function (err, result) {
     if (err) {
         res.status(500).send(err.toString());
@@ -130,7 +150,7 @@ app.get('/blog/article/:id', function (req, res) {
             res.status(404).send('Article not found');
         } else {
             var articleData = result.rows[0];
-            res.send(createTemplate(articleData));
+            res.send(createTemplate(articleData,comments));
         }
     }
   });
