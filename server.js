@@ -53,6 +53,7 @@ function createTemplate (data,comment) {
     <!-- Bootstrap -->
     <link href="/ui/blog/css/bootstrap.min.css" rel="stylesheet">
     <link href="/ui/blog/css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   </head>
   <body>
       
