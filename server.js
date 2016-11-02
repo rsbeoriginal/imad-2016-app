@@ -88,7 +88,7 @@ function createTemplate (data,comment) {
                     <script>
                     console.log(document.getElementById('txt_comment').value);
                     $(document).ready(function() {
-                        $("bt-comment").click(function(){
+                        $("#bt-comment").click(function(){
                             console.log(document.getElementById('txt_comment').value);
                             $.post("/comment",
                             {
