@@ -82,6 +82,7 @@ function createTemplate (data,comment) {
                         <img src="/ui/blog/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%;">
                     </span>
                     <input type="text" class="form-control" placeholder="Write a comment . . . " style="height:48px" >
+                    <button class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
                 </div>
                 <!--Comments by users -->
                 <ul id="list-comment" class="list-group">
