@@ -22,6 +22,7 @@ function createTemplate (data,comment) {
     var body = data.body;
     var likes = data.likes;
     var dislikes =data.dislikes;
+    var articleId=data.id;
     
     var commentTemplate="";
     
@@ -82,8 +83,24 @@ function createTemplate (data,comment) {
                     <span class="input-group-addon" >
                         <img src="/ui/blog/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%;">
                     </span>
-                    <input type="text" class="form-control" placeholder="Write a comment . . . " style="height:48px" >
-                    <button class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
+                    <input id="txt_comment" type="text" class="form-control" placeholder="Write a comment . . . " style="height:48px" >
+                    <button id="bt-comment" class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
+                    <script>
+                    $("button").click(function(){
+                        $.post("demo_test_post.asp",
+                        {
+                            article-id: "${articleId}",
+                            user-id: "1",
+                            comment: document.getElementById('txt_comment').value ,
+                            full-name: "Rishi Sharma"
+                            
+                        },
+                        function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                            console.log('done');
+                        });
+                    });
+                    </script>
                 </div>
                 <!--Comments by users -->
                 <ul id="list-comment" class="list-group">
@@ -169,6 +186,22 @@ app.get('/ui/blog/css/style.css', function (req, res) {
 app.get('/ui/blog/res/list_item.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog/res', 'list_item.jpg'));
 });
+
+app.post('/comment',function(req,res){
+    var a_id=req.body.article-id;
+    var u_id=req.body.user-id;
+    var c=req.body.comment;
+    var f_name=req.body.full-name;
+    
+    pool.query('INSERT INTO comment (article_id,user_id,comment,full_name) VALUES ($1,$2,$3,$4);',[a_id,u_id,c,f_name],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.status(500).send('Success');
+        }
+    });
+});
+
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
