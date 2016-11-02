@@ -79,7 +79,7 @@ function createTemplate (data,comment) {
                 <label><h4 class="page-header" style="margin:2%">Comments</h4></label>
                 <div class="input-group" style="padding:1%;background-color:#f3f3f3">
                     <span class="input-group-addon" >
-                        <img src="res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%;">
+                        <img src="/ui/blog/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%;">
                     </span>
                     <input type="text" class="form-control" placeholder="Write a comment . . . " style="height:48px" >
                 </div>
