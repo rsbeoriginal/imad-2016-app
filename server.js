@@ -86,8 +86,8 @@ function createTemplate (data,comment) {
                     <input id="txt_comment" type="text" class="form-control" placeholder="Write a comment . . . " style="height:48px" >
                     <button id="bt-comment" class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
                     <script>
-                    $("button").click(function(){
-                        $.post("demo_test_post.asp",
+                    $("bt-comment").click(function(){
+                        $.post("/comment",
                         {
                             article-id: "${articleId}",
                             user-id: "1",
