@@ -87,6 +87,7 @@ function createTemplate (data,comment) {
                     <button id="bt-comment" class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
                     <script>
                     $("bt-comment").click(function(){
+                    console.log(document.getElementById('txt_comment').value);
                         $.post("/comment",
                         {
                             articleId: "${articleId}",
