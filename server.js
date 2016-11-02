@@ -30,7 +30,7 @@ function createTemplate (data,comment) {
         commentTemplate+=`
         <div class="list-group-item white row" style="margin:3%;background-color:#f2f2f2;border-radius:5px">
                         <div class="col-md-1">
-                            <img src="res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%">
+                            <img src="/ui/blog/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%">
                         </div>
                         <div class="col-md-5" style="margin-left:1%">
                             <h5><strong>${comment[i].full_name}</strong></h4>
@@ -164,6 +164,9 @@ app.get('/ui/blog/css/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog/css', 'style.css'));
 });
 
+app.get('/ui/blog/res/list_item.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui/blog/res', 'list_item.jpg'));
+});
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
