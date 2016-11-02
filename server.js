@@ -96,7 +96,7 @@ function createTemplate (data,comment) {
                             
                         },
                         function(data, status){
-                            //alert("Data: " + data + "\nStatus: " + status);
+                            alert("Data: " + data + "Status: " + status);
                             console.log('done');
                         });
                     });
