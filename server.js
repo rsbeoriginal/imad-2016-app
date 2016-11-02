@@ -54,10 +54,10 @@ function createTemplate (data,comment) {
     <!-- Bootstrap -->
     <link href="/ui/blog/css/bootstrap.min.css" rel="stylesheet">
     <link href="/ui/blog/css/style.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
   </head>
   <body>
-      
+      <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <!--Navigation Bar-->
     <div class="navbar navbar-static-top bs-docs-nav shadow" style="background-color:red;border-radius: 5px;width:100%; height:7.5%; padding:0.5%; position:fixed">
   		<div class="row">
@@ -87,21 +87,24 @@ function createTemplate (data,comment) {
                     <button id="bt-comment" class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
                     <script>
                     console.log(document.getElementById('txt_comment').value);
-                    $("bt-comment").click(function(){
-                    console.log(document.getElementById('txt_comment').value);
-                        $.post("/comment",
-                        {
-                            articleId: "${articleId}",
-                            userId: "1",
-                            comment: document.getElementById('txt_comment').value ,
-                            fullName: "Rishi Sharma"
+                    $(document).ready(function() {
+                        $("bt-comment").click(function(){
+                            console.log(document.getElementById('txt_comment').value);
+                            $.post("/comment",
+                            {
+                                articleId: "${articleId}",
+                                userId: "1",
+                                comment: document.getElementById('txt_comment').value ,
+                                fullName: "Rishi Sharma"
                             
-                        },
-                        function(data, status){
-                            alert("Data: " + data + "Status: " + status);
-                            console.log('done');
-                        });
+                            },
+                            function(data, status){
+                                alert("Data: " + data + "    Status: " + status);
+                                console.log('done');
+                            });
+                        });  
                     });
+                    
                     </script>
                 </div>
                 <!--Comments by users -->
