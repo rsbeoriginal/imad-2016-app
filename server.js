@@ -198,7 +198,7 @@ app.post('/comment',function(req,res){
     var c=req.body.comment;
     var f_name=req.body.fullName;
     
-    pool.query('INSERT INTO comment (article_id,user_id,comment,full_name) VALUES ($1,$2,\'$3\',\'$4\');',[1,1,'direct','Rishi'],function(err,result){
+    pool.query('INSERT INTO comment (article_id,user_id,comment,full_name) VALUES (1,1,\'direct\',\'Rishi\');',function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
