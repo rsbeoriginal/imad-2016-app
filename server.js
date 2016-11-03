@@ -95,18 +95,23 @@ function createTemplate (data,comment) {
                     $(document).ready(function() {
                         $("#bt-comment").click(function(){
                             console.log(document.getElementById('txt_comment').value);
-                            $.post("/comment",
-                            {
+                            
+                            $.ajax({
+                              url:"/comment",
+                              type:"POST",
+                              headers: { 
+                                "Content-Type": "application/x-www-form-urlencoded"
+                              },
+                              data:
+                              {
                                 articleId: "${articleId}",
                                 userId: "1",
                                 comment: document.getElementById('txt_comment').value ,
                                 fullName: "Rishi Sharma"
                             
                             },
-                            function(data, status){
-                                alert("Data: " + data + "    Status: " + status);
-                                console.log('done');
-                            });
+                              dataType:"json"
+                            })  
                         });  
                     });
                     
