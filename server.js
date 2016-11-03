@@ -209,6 +209,7 @@ app.post('/comment',function(req,res){
     //         res.send('Success');
     //     }
     // });
+    var jsonString="";
     req.on('data', function (data) {
             jsonString += data;
         });
