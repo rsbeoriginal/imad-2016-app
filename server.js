@@ -200,7 +200,7 @@ app.post('/comment',function(req,res){
     // var u_id=req.body.userId;
     // var c=req.body.comment;
     // var f_name=req.body.fullName;
-    console.log(req.params);
+    //console.log(req.params);
     res.send(req.toString());
     // pool.query('INSERT INTO comment (article_id,user_id,comment,full_name) VALUES (1,1,\'direct\',\'Rishi\');',function(err,result){
     //     if(err){
@@ -209,6 +209,14 @@ app.post('/comment',function(req,res){
     //         res.send('Success');
     //     }
     // });
+    req.on('data', function (data) {
+            jsonString += data;
+        });
+
+        req.on('end', function () {
+            console.log(JSON.parse(jsonString));
+        });
+    
 });
 
 
