@@ -201,7 +201,7 @@ app.post('/comment',function(req,res){
     // var c=req.body.comment;
     // var f_name=req.body.fullName;
     //console.log(req.params);
-    res.send(req.toString());
+    //res.send(req.toString());
     // pool.query('INSERT INTO comment (article_id,user_id,comment,full_name) VALUES (1,1,\'direct\',\'Rishi\');',function(err,result){
     //     if(err){
     //         res.status(500).send(err.toString());
@@ -215,6 +215,7 @@ app.post('/comment',function(req,res){
 
         req.on('end', function () {
             console.log(JSON.parse(jsonString));
+            res.send(JSON.parse(jsonString));
         });
     
 });
