@@ -193,10 +193,10 @@ app.get('/ui/blog/res/list_item.jpg', function (req, res) {
 });
 
 app.post('/comment',function(req,res){
-    var a_id=req.body.articleId;
-    var u_id=req.body.userId;
-    var c=req.body.comment;
-    var f_name=req.body.fullName;
+    // var a_id=req.body.articleId;
+    // var u_id=req.body.userId;
+    // var c=req.body.comment;
+    // var f_name=req.body.fullName;
     
     pool.query('INSERT INTO comment (article_id,user_id,comment,full_name) VALUES (1,1,\'direct\',\'Rishi\');',function(err,result){
         if(err){
