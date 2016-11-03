@@ -16,6 +16,12 @@ var config = {
 
 var pool = new Pool(config);
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
+
 
 function createTemplate (data,comment) {
     var title = data.title;
