@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+var bodyParser=require('body-parser');
 
 var app = express();
 app.use(morgan('combined'));
@@ -17,7 +18,8 @@ var config = {
 var pool = new Pool(config);
 
 //app.use(express.bodyParser());
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 function createTemplate (data,comment) {
@@ -209,16 +211,17 @@ app.post('/comment',function(req,res){
     //         res.send('Success');
     //     }
     // });
-    var jsonString="";
-    req.on('data', function (data) {
-            jsonString += data;
-        });
+    // var jsonString="";
+    // req.on('data', function (data) {
+    //         jsonString += data;
+    //     });
 
-        req.on('end', function () {
-            console.log(JSON.parse(jsonString));
-            res.send(JSON.parse(jsonString));
-        });
-    
+    //     req.on('end', function () {
+    //         console.log(JSON.parse(jsonString));
+    //         res.send(JSON.parse(jsonString));
+    //     });
+    console.log(req.body);
+    res.send(req.body);
 });
 
 
