@@ -203,28 +203,18 @@ app.get('/ui/blog/res/list_item.jpg', function (req, res) {
 });
 
 app.post('/comment',function(req,res){
-    // var a_id=req.body.articleId;
-    // var u_id=req.body.userId;
-    // var c=req.body.comment;
-    // var f_name=req.body.fullName;
-    //console.log(req.params);
-    //res.send(req.toString());
-    // pool.query('INSERT INTO comment (article_id,user_id,comment,full_name) VALUES (1,1,\'direct\',\'Rishi\');',function(err,result){
-    //     if(err){
-    //         res.status(500).send(err.toString());
-    //     }else{
-    //         res.send('Success');
-    //     }
-    // });
-    // var jsonString="";
-    // req.on('data', function (data) {
-    //         jsonString += data;
-    //     });
-
-    //     req.on('end', function () {
-    //         console.log(JSON.parse(jsonString));
-    //         res.send(JSON.parse(jsonString));
-    //     });
+    var a_id=req.body.articleId;
+    var u_id=req.body.userId;
+    var c=req.body.comment;
+    var f_name=req.body.fullName;
+    
+    pool.query(`INSERT INTO comment (article_id,user_id,comment,full_name) VALUES (${a_id},${u_id},'${c}','${f_name}');`,function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send('Success');
+        }
+    });
     console.log(req.body);
     res.send(req.body);
 });
