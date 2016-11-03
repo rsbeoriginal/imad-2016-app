@@ -16,7 +16,7 @@ var config = {
 
 var pool = new Pool(config);
 
-app.use(express.bodyParser());
+//app.use(express.bodyParser());
 
 
 
