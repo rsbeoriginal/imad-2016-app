@@ -18,8 +18,8 @@ var config = {
 var pool = new Pool(config);
 
 //app.use(express.bodyParser());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 
 function createTemplate (data,comment) {
@@ -220,8 +220,8 @@ app.post('/comment',function(req,res){
     //         console.log(JSON.parse(jsonString));
     //         res.send(JSON.parse(jsonString));
     //     });
-    console.log(req.body);
-    res.send(req.body);
+    // console.log(req.body);
+    // res.send(req.body);
 });
 
 
