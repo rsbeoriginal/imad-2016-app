@@ -110,10 +110,10 @@ function createTemplate (data,comment) {
                                 fullName: "Rishi Sharma"
                             
                             },
-                              dataType:"json"
+                              dataType:"json",
                               success: function(data) {
                                 alert('Comment posted on database.');
-                            },
+                            }
                             });  
                         });  
                     });
