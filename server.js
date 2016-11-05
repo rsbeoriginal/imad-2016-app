@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
 var bodyParser=require('body-parser');
+var session = require('express-session');
 
 var app = express();
 app.use(morgan('combined'));
@@ -20,6 +21,10 @@ var pool = new Pool(config);
 //app.use(express.bodyParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'someRandomSecretValue',
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
+}));
 
 
 function createTemplate (data,comment) {
@@ -223,6 +228,39 @@ app.post('/comment',function(req,res){
     res.send(req.body);
 });
 
+app.post('/login', function (req, res) {
+   var username = req.body.username;
+   var password = req.body.password;
+   
+   pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
+      if (err) {
+          res.status(500).send(err.toString());
+      } else {
+          if (result.rows.length === 0) {
+              res.status(403).send('username/password is invalid');
+          } else {
+              // Match the password
+              var dbString = result.rows[0].password;
+              if (password === dbString) {
+                
+                // Set the session
+                req.session.auth = {userId: result.rows[0].id,
+                                    userName: result.rows[0].username,
+                                    userFullName: result.rows[0].full_name
+                };
+                // set cookie with a session id
+                // internally, on the server side, it maps the session id to an object
+                // { auth: {userId }}
+                
+                res.send('credentials correct!');
+                
+              } else {
+                res.status(403).send('username/password is invalid');
+              }
+          }
+      }
+   });
+});
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
