@@ -287,6 +287,25 @@ app.get('/logout', function (req, res) {
 });
 
 
+app.post('/create-user', function (req, res) {
+   // username, password
+   // {"username": "tanmai", "password": "password"}
+   // JSON
+   var username = req.body.username;
+   var password = req.body.password;
+   car full_name= req.body.full_name
+   //var salt = crypto.randomBytes(128).toString('hex');
+   //var dbString = hash(password, salt);
+   pool.query('INSERT INTO "user" (username, password,full_name) VALUES ($1, $2, $3)', [username, password, full_name], function (err, result) {
+      if (err) {
+          res.status(500).send(err.toString());
+      } else {
+          res.send('User successfully created: ' + username);
+      }
+   });
+});
+
+
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
