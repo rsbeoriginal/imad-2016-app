@@ -111,6 +111,9 @@ function createTemplate (data,comment) {
                             
                             },
                               dataType:"json"
+                              success: function(data) {
+                                alert('Comment posted on database.');
+                            }
                             })  
                         });  
                     });
