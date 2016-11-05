@@ -242,6 +242,8 @@ app.post('/login', function (req, res) {
               // Match the password
               var dbString = result.rows[0].password;
                 //res.send(password.toString());
+                console.log('db: '+dbString);
+                console.log('password: '+password);
               if (password === dbString) {
                 
                 // Set the session
