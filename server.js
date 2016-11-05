@@ -113,6 +113,10 @@ function createTemplate (data,comment) {
                               dataType:"json",
                               success: function(data) {
                                 alert('Comment posted on database.');
+                                $.ajax({
+                                    url:"/blog/article/${articleId}",
+                                    type:"GET"
+                                });
                             }
                             });  
                         });  
