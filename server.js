@@ -172,6 +172,10 @@ app.get('/blog', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog', 'index.html'));
 });
 
+app.get('/sign-up', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui/blog', 'sign-up.html'));
+});
+
 app.get('/blog/article/:id', function (req, res) {
     var comments;
     pool.query("SELECT * FROM comment WHERE article_id = $1", [req.params.id], function (err, result) {
