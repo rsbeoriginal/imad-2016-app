@@ -63,8 +63,7 @@
       <script>
                     $(document).ready(function() {
                         $("#bt-sign-up").click(function(){
-                            console.log(document.getElementById('txt_comment').value);
-                            
+                        $('#bt-sign-up').addAttr("disabled");
                             $.ajax({
                               url:"/create-user",
                               type:"POST",
@@ -80,6 +79,7 @@
                             },
                               dataType:"json",
                               success: function(data) {
+                                $('#bt-sign-up').removeAttr("disabled")  
                                 alert('User created successfully');
                                 window.location.href = "/blog";
                             }
