@@ -105,26 +105,40 @@ function createTemplate (data,comment,req) {
                         $("#bt-comment").click(function(){
                             console.log(document.getElementById('txt_comment').value);
                             
-                            $.ajax({
-                              url:"/comment",
-                              type:"POST",
-                              headers: { 
-                                "Content-Type": "application/x-www-form-urlencoded"
-                              },
-                              data:
-                              {
-                                articleId: "${articleId}",
-                                userId: "${req.session.auth.userId}",
-                                comment: document.getElementById('txt_comment').value ,
-                                fullName: "${req.session.auth.userFullName}"
+                            var request = new XMLHttpRequest();
+                            request.onreadystatechange = function () {
+                                if (request.readyState === XMLHttpRequest.DONE) {
+                                    if (request.status === 200) {
+                                        $.ajax({
+                                          url:"/comment",
+                                          type:"POST",
+                                          headers: { 
+                                            "Content-Type": "application/x-www-form-urlencoded"
+                                          },
+                                          data:
+                                          {
+                                            articleId: "${articleId}",
+                                            userId: "${req.session.auth.userId}",
+                                            comment: document.getElementById('txt_comment').value ,
+                                            fullName: "${req.session.auth.userFullName}"
+                                        
+                                        },
+                                          dataType:"json",
+                                          success: function(data) {
+                                            alert('Comment posted on database.');
+                                            location.reload();
+                                        }
+                                        });  
+                                    } else {
+                                            alert('Login first to comment on an Article');
+                                    }
+                                }
+                            };
                             
-                            },
-                              dataType:"json",
-                              success: function(data) {
-                                alert('Comment posted on database.');
-                                location.reload();
-                            }
-                            });  
+                            request.open('GET', '/check-login', true);
+                            request.send();
+                            
+                            
                         });  
                     });
                     
