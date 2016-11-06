@@ -27,7 +27,7 @@ app.use(session({
 }));
 
 
-function createTemplate (data,comment) {
+function createTemplate (data,comment,req) {
     var title = data.title;
     var body = data.body;
     var likes = data.likes;
@@ -114,9 +114,9 @@ function createTemplate (data,comment) {
                               data:
                               {
                                 articleId: "${articleId}",
-                                userId: "1",
+                                userId: "${req.session.auth.userId}",
                                 comment: document.getElementById('txt_comment').value ,
-                                fullName: "Rishi Sharma"
+                                fullName: "${req.session.auth.userFullName}"
                             
                             },
                               dataType:"json",
@@ -139,6 +139,7 @@ function createTemplate (data,comment) {
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/ui/main.js"></script>
   </body>
 </html>
     `;
@@ -203,7 +204,7 @@ app.get('/blog/article/:id', function (req, res) {
             res.status(404).send('Article not found');
         } else {
             var articleData = result.rows[0];
-            res.send(createTemplate(articleData,comments));
+            res.send(createTemplate(articleData,comments,req));
         }
     }
   });
