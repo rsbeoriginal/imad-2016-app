@@ -1,5 +1,5 @@
 console.log('Loaded!');
-function loadLoginForm () {
+function loadLoginForm() {
     // var loginHtml = `
     //     <h3>Login/Register to unlock awesome features</h3>
     //     <input type="text" id="username" placeholder="username" />
@@ -34,6 +34,8 @@ function loadLoginForm () {
               //loadLogin();
           }  
           // Not done yet
+        
+        };
           // Make the request
         var username = document.getElementById('txt_username').value;
         var password = document.getElementById('txt_password').value;
@@ -43,10 +45,9 @@ function loadLoginForm () {
         request.setRequestHeader('Content-Type', 'application/json');
         request.send(JSON.stringify({username: username, password: password}));  
         submit.value = 'Logging in...';
-        };
-        
         
         
     };
+}
     
 loadLoginForm();
