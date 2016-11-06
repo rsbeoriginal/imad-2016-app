@@ -58,9 +58,16 @@ function loadLoginForm() {
 function loadLoggedInUser (username) {
     var loginArea = document.getElementById('login_area');
     loginArea.innerHTML = `
-        <h3> Hi <i>${username}</i></h3>
-        <a href="/logout">Logout</a>
+<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hi <i>${username}</i> <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="/logout">Logout</a></li>
+                      </ul>
     `;
+    
+    
+    
 }
     
 function loadLogin() {
