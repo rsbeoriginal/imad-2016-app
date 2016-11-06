@@ -75,7 +75,7 @@ function createTemplate (data,comment) {
                 <div style="margin-left:45%" class="col-md-1 center "><h3><strong>Blog</strong></h3></div>
                 <!-- Single button -->
                     <div class="col-md-1 right btn-group" style=" margin-right:5%">
-                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button id="bt-login" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Log in <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
