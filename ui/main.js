@@ -49,4 +49,4 @@ function loadLoginForm () {
         
     };
     
-loadLoginForm ();
+loadLoginForm();
