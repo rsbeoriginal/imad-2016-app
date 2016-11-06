@@ -88,6 +88,7 @@ function createTemplate (data,comment) {
                       </ul>
                     </div>
             </div>
+            </div>
   	</div>
       <br><br>
   	<div class="row" >
