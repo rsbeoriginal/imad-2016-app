@@ -17,7 +17,21 @@
     <div class="navbar navbar-static-top bs-docs-nav shadow" style="background-color:red;border-radius: 5px;width:100%; height:7.5%; padding:0.5%; position:fixed">
   		<div class="row">
             <div>
-                <h3 style="margin:0.75%;margin-left:45%"><strong>Blog</strong></h3>
+                <div style="margin-left:45%" class="col-md-1 center "><h3><strong>Blog</strong></h3></div>
+                <!-- Single button -->
+                    <div class="col-md-1 right btn-group" style=" margin-right:5%">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Log in <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><input type="text" class="form-control" placeholder="Username "></li>
+                        <li><input type="password" class="form-control" placeholder="Password" ></li>
+                        <li><button class="btn btn-success"><strong>Sign in</strong></button></li>
+                        <li role="separator" class="divider"></li>
+                        <li><small>Don't have an account?</small><br>
+                            <a href="#">Sign up</a></li>
+                      </ul>
+                    </div>
             </div>
         </div>
   	</div>
@@ -52,6 +66,9 @@
                 </ul>
             </div>
             
-        </div>        
+        </div> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      
   </body>
 </html>
