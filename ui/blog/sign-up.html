@@ -63,7 +63,7 @@
       <script>
                     $(document).ready(function() {
                         $("#bt-sign-up").click(function(){
-                        $('#bt-sign-up').addAttr("disabled");
+                        $('#bt-sign-up').attr("disabled");
                             $.ajax({
                               url:"/create-user",
                               type:"POST",
