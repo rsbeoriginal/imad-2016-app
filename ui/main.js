@@ -34,9 +34,7 @@ function loadLoginForm () {
               //loadLogin();
           }  
           // Not done yet
-        };
-        
-        // Make the request
+          // Make the request
         var username = document.getElementById('txt_username').value;
         var password = document.getElementById('txt_password').value;
         console.log(username);
@@ -45,6 +43,9 @@ function loadLoginForm () {
         request.setRequestHeader('Content-Type', 'application/json');
         request.send(JSON.stringify({username: username, password: password}));  
         submit.value = 'Logging in...';
+        };
+        
+        
         
     };
     
