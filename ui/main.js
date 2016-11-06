@@ -1,14 +1,19 @@
 console.log('Loaded!');
 function loadLoginForm() {
-    // var loginHtml = `
-    //     <h3>Login/Register to unlock awesome features</h3>
-    //     <input type="text" id="username" placeholder="username" />
-    //     <input type="password" id="password" />
-    //     <br/><br/>
-    //     <input type="submit" id="login_btn" value="Login" />
-    //     <input type="submit" id="register_btn" value="Register" />
-    //     `;
-    // document.getElementById('login_area').innerHTML = loginHtml;
+    var loginHtml = `
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Log in <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><input id="txt_username" type="text" class="form-control" placeholder="Username "></li>
+                        <li><input id="txt_password" type="password" class="form-control" placeholder="Password" ></li>
+                        <li><button id="bt_login" class="btn btn-success"><strong>Sign in</strong></button></li>
+                        <li role="separator" class="divider"></li>
+                        <li><small>Don't have an account?</small><br>
+                            <a href="/blog/sign-up">Sign up</a></li>
+                      </ul>
+        `;
+    document.getElementById('login_area').innerHTML = loginHtml;
     
     // Submit username/password to login
     var submit = document.getElementById('bt_login');
@@ -50,4 +55,21 @@ function loadLoginForm() {
     };
 }
     
-loadLoginForm();
+function loadLogin() {
+    // Check if the user is already logged in
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+                loadLoggedInUser(this.responseText);
+            } else {
+                loadLoginForm();
+            }
+        }
+    };
+    
+    request.open('GET', '/check-login', true);
+    request.send(null);
+}
+
+loadLogin();
