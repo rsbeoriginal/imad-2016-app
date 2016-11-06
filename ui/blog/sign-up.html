@@ -57,7 +57,8 @@
                 
             </div>
             
-        </div>  
+        </div> 
+    </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
       <script>
@@ -79,6 +80,7 @@
                             },
                               dataType:"json",
                               success: function(data) {
+                                  console.log('user created');
                                 $('#bt-sign-up').removeAttr("disabled"); 
                                 alert('User created successfully');
                                 window.location.href = "/blog";
