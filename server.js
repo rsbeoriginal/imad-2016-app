@@ -67,7 +67,7 @@ function createTemplate (data,comment) {
     
   </head>
   <body>
-      <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+     
     <!--Navigation Bar-->
     <div class="navbar navbar-static-top bs-docs-nav shadow" style="background-color:red;border-radius: 5px;width:100%; height:7.5%; padding:0.5%; position:fixed">
   		<div class="row">
