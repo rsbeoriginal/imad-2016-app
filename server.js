@@ -172,7 +172,7 @@ app.get('/blog', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog', 'index.html'));
 });
 
-app.get('/sign-up', function (req, res) {
+app.get('/blog/sign-up', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog', 'sign-up.html'));
 });
 
