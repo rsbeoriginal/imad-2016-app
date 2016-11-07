@@ -52,7 +52,7 @@ function loadLoginForm() {
         submit.value = 'Logging in...';
         
         
-        location.reload();
+        location.reload(true);
     };
 }
 
