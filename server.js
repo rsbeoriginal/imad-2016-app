@@ -231,7 +231,7 @@ function createTemplate (data,comment) {
                         <img src="/ui/blog/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%;">
                     </span>
                     <input id="txt_comment" type="text" class="form-control" placeholder="Write a comment . . . " style="height:48px" >
-                    <button id="bt-comment" class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
+                    <button id="bt-comment" class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;" disabled><strong>Comment</strong></button>
                     <script>
                     console.log(document.getElementById('txt_comment').value);
                     $(document).ready(function() {
