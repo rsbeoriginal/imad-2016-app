@@ -109,28 +109,26 @@ function createTemplate (data,comment,req) {
                             request.onreadystatechange = function () {
                                 if (request.readyState === XMLHttpRequest.DONE) {
                                     if (request.status === 200) {
-                                    if(req!=null){
-                                            $.ajax({
-                                              url:"/comment",
-                                              type:"POST",
-                                              headers: { 
-                                                "Content-Type": "application/x-www-form-urlencoded"
-                                              },
-                                              data:
-                                              {
-                                                articleId: "${articleId}",
-                                                userId: "${req.session.auth.userId}",
-                                                comment: document.getElementById('txt_comment').value ,
-                                                fullName: "${req.session.auth.userFullName}"
-                                            
-                                            },
-                                              dataType:"json",
-                                              success: function(data) {
-                                                alert('Comment posted on database.');
-                                                location.reload();
-                                            }
-                                            });  
+                                        $.ajax({
+                                          url:"/comment",
+                                          type:"POST",
+                                          headers: { 
+                                            "Content-Type": "application/x-www-form-urlencoded"
+                                          },
+                                          data:
+                                          {
+                                            articleId: "${articleId}",
+                                            userId: "${req.session.auth.userId}",
+                                            comment: document.getElementById('txt_comment').value ,
+                                            fullName: "${req.session.auth.userFullName}"
+                                        
+                                        },
+                                          dataType:"json",
+                                          success: function(data) {
+                                            alert('Comment posted on database.');
+                                            location.reload();
                                         }
+                                        });  
                                     } else {
                                             alert('Login first to comment on an Article');
                                     }
@@ -162,6 +160,117 @@ function createTemplate (data,comment,req) {
     return htmlTemplate;
 }
 
+function createTemplate (data,comment) {
+    var title = data.title;
+    var body = data.body;
+    var likes = data.likes;
+    var dislikes =data.dislikes;
+    var articleId=data.id;
+    
+    var commentTemplate="";
+    
+    var i;
+    for(i=0;i<comment.length;i++){
+        commentTemplate+=`
+        <div class="list-group-item white row" style="margin:3%;background-color:#f2f2f2;border-radius:5px">
+                        <div class="col-md-1">
+                            <img src="/ui/blog/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%">
+                        </div>
+                        <div class="col-md-5" style="margin-left:1%">
+                            <h5><strong>${comment[i].full_name}</strong></h4>
+                            <h4><small>${comment[i].comment}</small></h4>
+                        </div>
+                    </div>
+        `;
+    }
+    
+    var htmlTemplate = `
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Material Design</title>
+
+    <!-- Bootstrap -->
+    <link href="/ui/blog/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ui/blog/css/style.css" rel="stylesheet">
+    
+  </head>
+  <body>
+      <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <!--Navigation Bar-->
+    <div class="navbar navbar-static-top bs-docs-nav shadow" style="background-color:red;border-radius: 5px;width:100%; height:7.5%; padding:0.5%; position:fixed">
+  		<div class="row">
+            <div>
+                <div style="margin-left:45%" class="col-md-1 center "><h3><strong>Blog</strong></h3></div>
+                <!-- Single button -->
+                    <div id="login_area" class="col-md-1 right btn-group" style=" margin-right:5%">
+                      
+                    </div>
+            </div>
+            </div>
+  	</div>
+      <br><br>
+  	<div class="row" >
+  		<div id="col-left" class="margin-top-bottom left" style="margin-left:20%">            
+            <div class="margin-top-bottom white shadow list-group-item" style="border-radius:4px;padding:1%">
+                    <h3><strong>`+title+`</strong></h3>
+                    <p><h4><small>`+body+` </small></h4></p>
+                    <div><h5><small>`+likes+` Likes | `+dislikes+` Dislikes</small></h5>
+                    </div>
+            </div>
+            <!--Comment Section -->
+                <!-- Write a Comment Section-->
+            <div class="margin-top-bottom white shadow" style="padding:2%">         
+                <label><h4 class="page-header" style="margin:2%">Comments</h4></label>
+                <div class="input-group" style="padding:1%;background-color:#f3f3f3">
+                    <span class="input-group-addon" >
+                        <img src="/ui/blog/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%;">
+                    </span>
+                    <input id="txt_comment" type="text" class="form-control" placeholder="Write a comment . . . " style="height:48px" >
+                    <button id="bt-comment" class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
+                    <script>
+                    console.log(document.getElementById('txt_comment').value);
+                    $(document).ready(function() {
+                        $("#bt-comment").click(function(){
+                            console.log(document.getElementById('txt_comment').value);
+                            
+                            var request = new XMLHttpRequest();
+                            request.onreadystatechange = function () {
+                                if (request.readyState === XMLHttpRequest.DONE) {
+                                    if (request.status === 200) {
+                                         alert('Login first to comment on an Article');     
+                                    }
+                                }
+                            };
+                            
+                            request.open('GET', '/check-login', true);
+                            request.send();
+                            
+                            
+                        });  
+                    });
+                    
+                    </script>
+                </div>
+                <!--Comments by users -->
+                <ul id="list-comment" class="list-group">
+                    ${commentTemplate}
+                </ul>
+            </div>
+            
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/ui/main.js"></script>
+  </body>
+</html>
+    `;
+    return htmlTemplate;
+}
 
 app.get('/db', function (req, res) {
   pool.query('SELECT * FROM article ,user;',function(err,result){
@@ -223,7 +332,7 @@ app.get('/blog/article/:id', function (req, res) {
             if (req.session && req.session.auth && req.session.auth.userId) {
                 res.send(createTemplate(articleData,comments,req));    
             }else{
-                res.send(createTemplate(articleData,comments,null));
+                res.send(createTemplate(articleData,comments));
             }
             
         }
