@@ -365,6 +365,10 @@ app.get('/ui/blog/res/list_item.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog/res', 'list_item.jpg'));
 });
 
+app.get('/ui/blog/fonts/:file', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui/blog/fonts', file));
+});
+
 app.post('/comment',function(req,res){
     var a_id=req.body.articleId;
     var u_id=req.body.userId;
