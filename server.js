@@ -109,26 +109,28 @@ function createTemplate (data,comment,req) {
                             request.onreadystatechange = function () {
                                 if (request.readyState === XMLHttpRequest.DONE) {
                                     if (request.status === 200) {
-                                        $.ajax({
-                                          url:"/comment",
-                                          type:"POST",
-                                          headers: { 
-                                            "Content-Type": "application/x-www-form-urlencoded"
-                                          },
-                                          data:
-                                          {
-                                            articleId: "${articleId}",
-                                            userId: "${req.session.auth.userId}",
-                                            comment: document.getElementById('txt_comment').value ,
-                                            fullName: "${req.session.auth.userFullName}"
-                                        
-                                        },
-                                          dataType:"json",
-                                          success: function(data) {
-                                            alert('Comment posted on database.');
-                                            location.reload();
+                                    if(req!=null){
+                                            $.ajax({
+                                              url:"/comment",
+                                              type:"POST",
+                                              headers: { 
+                                                "Content-Type": "application/x-www-form-urlencoded"
+                                              },
+                                              data:
+                                              {
+                                                articleId: "${articleId}",
+                                                userId: "${req.session.auth.userId}",
+                                                comment: document.getElementById('txt_comment').value ,
+                                                fullName: "${req.session.auth.userFullName}"
+                                            
+                                            },
+                                              dataType:"json",
+                                              success: function(data) {
+                                                alert('Comment posted on database.');
+                                                location.reload();
+                                            }
+                                            });  
                                         }
-                                        });  
                                     } else {
                                             alert('Login first to comment on an Article');
                                     }
@@ -218,7 +220,12 @@ app.get('/blog/article/:id', function (req, res) {
             res.status(404).send('Article not found');
         } else {
             var articleData = result.rows[0];
-            res.send(createTemplate(articleData,comments,req));
+            if (req.session && req.session.auth && req.session.auth.userId) {
+                res.send(createTemplate(articleData,comments,req));    
+            }else{
+                res.send(createTemplate(articleData,comments,null));
+            }
+            
         }
     }
   });
