@@ -217,9 +217,14 @@ function createTemplate (data,comment) {
   		<div class="row">
             <div>
                 <div class="col-md-1 left" style="margin-left:1%">
-                <button type="button" class="btn btn-default btn-lg">
+                <button id="bt_back" type="button" class="btn btn-default btn-lg">
                   <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back
                 </button>
+                <script>
+                $('#bt_back').click(function(){
+                    window.location.href = "/blog";
+                });
+                </script>
                 </div>
                 <div style="margin-left:40%" class="col-md-1 center "><h3><strong>Blog</strong></h3></div>
                 <!-- Single button -->
