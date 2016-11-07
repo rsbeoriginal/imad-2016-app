@@ -27,7 +27,7 @@ app.use(session({
 }));
 
 
-function createTemplateReq (data,comment,req) {
+function createTemplateReq (data,comment,userId,userFullName) {
     var title = data.title;
     var body = data.body;
     var likes = data.likes;
@@ -118,9 +118,9 @@ function createTemplateReq (data,comment,req) {
                                           data:
                                           {
                                             articleId: "${articleId}",
-                                            userId: "${req.session.auth.userId}",
+                                            userId: "${userId}",
                                             comment: document.getElementById('txt_comment').value ,
-                                            fullName: "${req.session.auth.userFullName}"
+                                            fullName: "${userFullName}"
                                         
                                         },
                                           dataType:"json",
@@ -330,7 +330,7 @@ app.get('/blog/article/:id', function (req, res) {
         } else {
             var articleData = result.rows[0];
             if (req.session && req.session.auth && req.session.auth.userId) {
-                res.send(createTemplateReq(articleData,comments,req)); 
+                res.send(createTemplateReq(articleData,comments,req.session.auth.userId,req.session.auth.userFullName)); 
                 console.log('req template');
             }else{
                 res.send(createTemplate(articleData,comments));
