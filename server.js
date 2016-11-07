@@ -74,7 +74,7 @@ function createTemplateReq (data,comment,userId,userFullName) {
   		<div class="row">
             <div>
                 <div class="col-md-1 left" style="margin-left:1%">
-                <button type="button" class="btn btn-default btn-lg">
+                <button href="/ui/blog" type="button" class="btn btn-default btn-lg">
                   <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back
                 </button>
                 </div>
