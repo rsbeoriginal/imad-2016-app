@@ -51,8 +51,8 @@ function loadLoginForm() {
         request.send(JSON.stringify({username: username, password: password}));  
         submit.value = 'Logging in...';
         
-        
-        location.reload(true);
+        window.location.href = window.location.pathname;
+        //location.reload(true);
     };
 }
 
