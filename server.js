@@ -366,8 +366,8 @@ app.get('/ui/blog/res/list_item.jpg', function (req, res) {
 });
 
 app.get('/ui/blog/fonts/:file', function (req, res) {
-    console.log(file);
-  res.sendFile(path.join(__dirname, 'ui/blog/fonts', ''+file));
+    console.log(file.toString());
+  res.sendFile(path.join(__dirname, 'ui/blog/fonts', ''+file.toString()));
 });
 
 app.post('/comment',function(req,res){
