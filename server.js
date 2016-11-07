@@ -330,9 +330,11 @@ app.get('/blog/article/:id', function (req, res) {
         } else {
             var articleData = result.rows[0];
             if (req.session && req.session.auth && req.session.auth.userId) {
-                res.send(createTemplate(articleData,comments,req));    
+                res.send(createTemplate(articleData,comments,req)); 
+                console.log('req template');
             }else{
                 res.send(createTemplate(articleData,comments));
+                console.log('req without template');
             }
             
         }
