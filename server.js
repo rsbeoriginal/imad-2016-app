@@ -27,7 +27,7 @@ app.use(session({
 }));
 
 
-function createTemplate (data,comment,req) {
+function createTemplateReq (data,comment,req) {
     var title = data.title;
     var body = data.body;
     var likes = data.likes;
@@ -330,7 +330,7 @@ app.get('/blog/article/:id', function (req, res) {
         } else {
             var articleData = result.rows[0];
             if (req.session && req.session.auth && req.session.auth.userId) {
-                res.send(createTemplate(articleData,comments,req)); 
+                res.send(createTemplateReq(articleData,comments,req)); 
                 console.log('req template');
             }else{
                 res.send(createTemplate(articleData,comments));
