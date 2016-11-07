@@ -73,7 +73,12 @@ function createTemplateReq (data,comment,userId,userFullName) {
     <div class="navbar navbar-static-top bs-docs-nav shadow" style="background-color:red;border-radius: 5px;width:100%; height:7.5%; padding:0.5%; position:fixed">
   		<div class="row">
             <div>
-                <div style="margin-left:45%" class="col-md-1 center "><h3><strong>Blog</strong></h3></div>
+                <div class="col-md-1 left" style="margin-left:1%">
+                <button type="button" class="btn btn-default btn-lg">
+                  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back
+                </button>
+                </div>
+                <div style="margin-left:40%" class="col-md-1 center "><h3><strong>Blog</strong></h3></div>
                 <!-- Single button -->
                     <div id="login_area" class="col-md-1 right btn-group" style=" margin-right:5%">
                       
@@ -206,7 +211,12 @@ function createTemplate (data,comment) {
     <div class="navbar navbar-static-top bs-docs-nav shadow" style="background-color:red;border-radius: 5px;width:100%; height:7.5%; padding:0.5%; position:fixed">
   		<div class="row">
             <div>
-                <div style="margin-left:45%" class="col-md-1 center "><h3><strong>Blog</strong></h3></div>
+                <div class="col-md-1 left" style="margin-left:1%">
+                <button type="button" class="btn btn-default btn-lg">
+                  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back
+                </button>
+                </div>
+                <div style="margin-left:40%" class="col-md-1 center "><h3><strong>Blog</strong></h3></div>
                 <!-- Single button -->
                     <div id="login_area" class="col-md-1 right btn-group" style=" margin-right:5%">
                       
