@@ -37,7 +37,8 @@ function createTemplateReq (data,comment,userId,userFullName) {
     var commentTemplate="";
     
     var i;
-    for(i=0;i<comment.length;i++){
+    var n= comment!==null?comment.length:0;
+    for(i=0;i<n;i++){
         commentTemplate+=`
         <div class="list-group-item white row" style="margin:3%;background-color:#f2f2f2;border-radius:5px">
                         <div class="col-md-1">
