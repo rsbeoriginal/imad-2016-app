@@ -446,7 +446,7 @@ app.post('/post',function(req,res){
     var body=req.body.body;
     var u_id=req.body.userId;
     
-    pool.query(`INSERT INTO article (title,body,user_id) VALUES (${title},${body},${u_id});`,function(err,result){
+    pool.query(`INSERT INTO "article" (title,body,user_id) VALUES ('${title}','${body},${u_id});`,function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
