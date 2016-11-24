@@ -311,7 +311,7 @@ app.get('/user-details', function (req, res) {
         //   json['username']="rsbeoriginal";
         //   json['full_name']="Rishi Sharma";
         //   json['post']=1;
-    res.send(JSON.stringify(json));
+    res.send(json);
 });
 
 app.get('/', function (req, res) {
