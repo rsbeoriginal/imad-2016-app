@@ -72,26 +72,6 @@
   	</div>
       -->
     <script>
-        var xmlhttp = new XMLHttpRequest();
-        var url = "http://rsbeoriginal.imad.hasura-app.io/user-details";
-
-        xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            console.log(this.responseText);
-            JSONParser(myArr);
-            }
-        };
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-        
-    function JSONParser(arr) {
-            document.getElementById("l_user_id").innerHTML="Username: "+arr.user_id;
-            document.getElementById("l_username").innerHTML="Username: "+arr.username;
-            document.getElementById("l_full_name").innerHTML="Full Name: "+arr.full_name;
-            document.getElementById("l_posts").innerHTML="Posts by you: "+arr.posts;
-    }
-    
     $("#bt-post").click(function(){
             
             var request = new XMLHttpRequest();
@@ -128,6 +108,30 @@
             
             
         });
+        
+    
+    
+        var xmlhttp = new XMLHttpRequest();
+        var url = "http://rsbeoriginal.imad.hasura-app.io/user-details";
+
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            console.log(this.responseText);
+            JSONParser(myArr);
+            }
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        
+    function JSONParser(arr) {
+            document.getElementById("l_user_id").innerHTML="Username: "+arr.user_id;
+            document.getElementById("l_username").innerHTML="Username: "+arr.username;
+            document.getElementById("l_full_name").innerHTML="Full Name: "+arr.full_name;
+            document.getElementById("l_posts").innerHTML="Posts by you: "+arr.posts;
+    }
+    
+    
         
     </script>
     
