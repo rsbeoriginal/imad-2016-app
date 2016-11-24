@@ -305,7 +305,7 @@ app.get('/db', function (req, res) {
 
 app.get('/user-details', function (req, res) {
     
-  pool.query('SELECT count(*) FROM "article" WHERE user_id=$1;',[String.trim(req.session.auth.userId)],function(err,result){
+  pool.query('SELECT count(*) FROM "article" WHERE user_id=$1;',[(req.session.auth.userId).toString().trim()],function(err,result){
       if(err){
           res.status(500).send(err.toString());
       }else{
