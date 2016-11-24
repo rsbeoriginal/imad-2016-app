@@ -7,12 +7,11 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Blog | Home</title>
 
-    <!-- Bootstrap 
+    <!-- Bootstrap -->
     <link href="/ui/blog/css/bootstrap.min.css" rel="stylesheet">
     <link href="/ui/blog/css/style.css" rel="stylesheet">
-	-->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+	
+	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,9 +45,9 @@
             <div class="margin-top-bottom white shadow">         
                 <label style="margin-left:2%"><h4 class="page-header">Account Details</h4></label>
                 <div class="input-group" style="display: block;padding:1%;background-color:#f3f3f3">
-                	<label style="margin-left:2%">Username: rsbeoriginal</label><br>
-                	<label style="margin-left:2%">Full Name: Rishi Sharma</label><br>
-                	<label style="margin-left:2%">Posts by you: 2</label>
+                	<label id="l_username" style="margin-left:2%">Username: rsbeoriginal</label><br>
+                	<label id="l_full_name" style="margin-left:2%">Full Name: Rishi Sharma</label><br>
+                	<label id="l_posts" style="margin-left:2%">Posts by you: 2</label>
                 </div>
             </div>            
             <div class="margin-top-bottom white shadow">
@@ -71,6 +70,27 @@
         </div>
   	</div>
       -->
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        var url = "http://rsbeoriginal.imad.hasura-app.io/user-details";
+
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            console.log(this.responseText);
+            JSONParser(myArr);
+            }
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        
+    function JSONParser(arr) {
+        
+            document.getElementById("l_username").innerHTML=arr.username;
+            document.getElementById("l_full_name").innerHTML=arr.full_name;
+            document.getElementById("l_posts").innerHTML=arr.posts;
+    }
+    </script>
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
