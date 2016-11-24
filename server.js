@@ -303,6 +303,19 @@ app.get('/db', function (req, res) {
   });
 });
 
+app.get('/user-details', function (req, res) {
+  pool.query('SELECT * FROM user WHERE id=$1;',[req.session.auth.userId],function(err,result){
+      if(err){
+          res.status(500).send(err.toString());
+      }else{
+          var json;
+          json.username=result.rows.username;
+          json.full_name=result.rows.full_name;
+          json.post=1;
+        res.send(JSON.stringify(json));   
+      }
+  });
+});
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
