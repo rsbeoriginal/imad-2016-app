@@ -309,7 +309,7 @@ app.get('/user-details', function (req, res) {
       if(err){
           res.status(500).send(err.toString());
       }else{
-        res.send(JSON.stringify({'username':req.session.auth.userName,'full_name':req.session.auth.userFullName,'posts': result.rows[0].count}));
+        res.send(JSON.stringify({'user_id':req.session.auth.userId,'username':req.session.auth.userName,'full_name':req.session.auth.userFullName,'posts': result.rows[0].count}));
       }
   });
     
@@ -442,9 +442,9 @@ app.post('/comment',function(req,res){
 });
 
 app.post('/post',function(req,res){
-    var title=req.body.articleId;
-    var body=req.body.userId;
-    var u_id=req.body.comment;
+    var title=req.body.title;
+    var body=req.body.body;
+    var u_id=req.body.userId;
     
     pool.query(`INSERT INTO article (title,body,user_id) VALUES (${title},${body},'${u_id}');`,function(err,result){
         if(err){
