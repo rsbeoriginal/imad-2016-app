@@ -441,6 +441,22 @@ app.post('/comment',function(req,res){
     res.send(req.body);
 });
 
+app.post('/post',function(req,res){
+    var title=req.body.articleId;
+    var body=req.body.userId;
+    var u_id=req.body.comment;
+    
+    pool.query(`INSERT INTO article (title,body,user_id) VALUES (${title},${body},'${u_id}');`,function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send('Article posted');
+        }
+    });
+    console.log(req.body);
+    res.send(req.body);
+});
+
 app.post('/login', function (req, res) {
    var username = req.body.username;
    var password = req.body.password;
