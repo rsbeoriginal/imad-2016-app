@@ -310,7 +310,7 @@ app.get('/user-details', function (req, res) {
           json['username']="rsbeoriginal";
           json['full_name']="Rishi Sharma";
           json['post']=1;
-        res.send(JSON.stringify(json));   
+        res.send("ch");   
   pool.query('SELECT * FROM "user" WHERE id=$1;',[req.session.auth.userId],function(err,result){
       if(err){
           res.status(500).send(err.toString());
