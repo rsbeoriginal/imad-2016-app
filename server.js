@@ -309,7 +309,7 @@ app.get('/user-details', function (req, res) {
       if(err){
           res.status(500).send(err.toString());
       }else{
-        res.send(JSON.stringify({'username':result.rows.username,'full_name':req.session.auth.userFullName}));
+        res.send(JSON.stringify({'username':req.session.auth.userName,'full_name':req.session.auth.userFullName}));
       }
   });
     
