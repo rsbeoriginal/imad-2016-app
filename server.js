@@ -363,6 +363,40 @@ app.get('/blog/article/:id', function (req, res) {
   });
 });
 
+app.get('/blog/profile', function (req, res) {
+    var comments;
+//     pool.query("SELECT * FROM comment WHERE article_id = $1", [req.params.id], function (err, result) {
+//     if (err) {
+//         res.status(500).send(err.toString());
+//     } else {
+//         //if (result.rows.length === 0) {
+//           // res.status(404).send('Article not found');
+//         //} else {
+//             comments = result.rows;
+//         //}
+//     }
+//   });
+//   pool.query("SELECT * FROM article WHERE id = $1", [req.params.id], function (err, result) {
+//     if (err) {
+//         res.status(500).send(err.toString());
+//     } else {
+//         if (result.rows.length === 0) {
+//             res.status(404).send('Article not found');
+//         } else {
+//             var articleData = result.rows[0];
+            if (req.session && req.session.auth && req.session.auth.userId) {
+                res.sendFile(path.join(__dirname, 'ui/blog', 'profile.html'));
+            }else{
+                res.send("You don't have access to view this page. Please Login first!!!");
+            }
+            
+//         }
+//     }
+//   });
+  
+  
+});
+
 app.get('/ui/blog/css/bootstrap.min.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog/css', 'bootstrap.min.css'));
 });
