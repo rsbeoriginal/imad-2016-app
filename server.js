@@ -307,8 +307,8 @@ app.get('/user-details', function (req, res) {
     var json=new Array();
           json.dotCheck="true";
           json["dQ"]="doubleQuotes";
-          json['username']=result.rows.username;
-          json['full_name']=result.rows.full_name;
+          json['username']="rsbeoriginal";
+          json['full_name']="Rishi Sharma";
           json['post']=1;
         res.send(JSON.stringify(json));   
   pool.query('SELECT * FROM "user" WHERE id=$1;',[req.session.auth.userId],function(err,result){
