@@ -309,6 +309,8 @@ app.get('/user-details', function (req, res) {
           res.status(500).send(err.toString());
       }else{
           var json=new Array();
+          json.dotCheck="true";
+          json["dQ"]="doubleQuotes";
           json['username']=result.rows.username;
           json['full_name']=result.rows.full_name;
           json['post']=1;
