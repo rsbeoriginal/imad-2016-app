@@ -307,10 +307,10 @@ app.get('/user-details', function (req, res) {
     
     var json=new Array();
           json.dotCheck="true";
-          json["dQ"]="doubleQuotes";
-          json['username']="rsbeoriginal";
-          json['full_name']="Rishi Sharma";
-          json['post']=1;
+        //   json["dQ"]="doubleQuotes";
+        //   json['username']="rsbeoriginal";
+        //   json['full_name']="Rishi Sharma";
+        //   json['post']=1;
     res.send(JSON.stringify(json));
 });
 
