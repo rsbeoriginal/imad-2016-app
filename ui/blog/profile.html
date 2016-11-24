@@ -72,6 +72,7 @@
   	</div>
       -->
     <script>
+    var u_id;
     $("#bt-post").click(function(){
             
             var request = new XMLHttpRequest();
@@ -86,7 +87,7 @@
                           },
                           data:
                           {
-                            userId: document.getElementById('l_user').innerHTML,
+                            userId: u_id,
                             title: document.getElementById('txt_post_title').value ,
                             body: document.getElementById('txt_post_body').value ,
                         
@@ -124,6 +125,7 @@
             xmlhttp.send();
             
         function JSONParser(arr) {
+            u_id=arr.user_id;
                 document.getElementById("l_user_id").innerHTML="Username: "+arr.user_id;
                 document.getElementById("l_username").innerHTML="Username: "+arr.username;
                 document.getElementById("l_full_name").innerHTML="Full Name: "+arr.full_name;
