@@ -63,6 +63,7 @@ function loadLoggedInUser (username) {
                         <i>${username}</i> <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
+                        <li><a href="/blog/profile">Profile</a></li>
                         <li><a href="/logout">Logout</a></li>
                       </ul>
     `;
