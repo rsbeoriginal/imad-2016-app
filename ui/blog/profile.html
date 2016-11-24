@@ -91,10 +91,8 @@
             document.getElementById("l_full_name").innerHTML="Full Name: "+arr.full_name;
             document.getElementById("l_posts").innerHTML="Posts by you: "+arr.posts;
     }
-    </script>
-    <script>
-    $(document).ready(function() {
-        $("#bt-post").click(function(){
+    
+    $("#bt-post").click(function(){
             
             var request = new XMLHttpRequest();
             request.onreadystatechange = function () {
@@ -129,7 +127,12 @@
             request.send();
             
             
-        });  
+        });
+        
+    </script>
+    <script>
+    $(document).ready(function() {
+          
     });
                     
                     </script>
