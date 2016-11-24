@@ -304,8 +304,14 @@ app.get('/db', function (req, res) {
 });
 
 app.get('/user-details', function (req, res) {
-    res.send("ch"); 
-   
+    
+    var json=new Array();
+          json.dotCheck="true";
+          json["dQ"]="doubleQuotes";
+          json['username']="rsbeoriginal";
+          json['full_name']="Rishi Sharma";
+          json['post']=1;
+    res.send("ch");
 });
 
 app.get('/', function (req, res) {
