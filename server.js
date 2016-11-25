@@ -425,9 +425,9 @@ app.get('/ui/blog/res/list_item.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog/res', 'list_item.jpg'));
 });
 
-app.get('/ui/blog/fonts/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui/blog/fonts', '*.*'));
-});
+// app.get('/ui/blog/fonts/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'ui/blog/fonts', '*.*'));
+// });
 
 app.get('/ui/blog/fonts/glyphicons-halflings-regular.woff', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog/fonts', 'glyphicons-halflings-regular.woff'));
