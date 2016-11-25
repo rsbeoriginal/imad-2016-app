@@ -429,6 +429,10 @@ app.get('/ui/blog/fonts/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/blog/fonts', '*.*'));
 });
 
+app.get('/ui/blog/fonts/glyphicons-halflings-regular.woff', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui/blog/fonts', 'glyphicons-halflings-regular.woff'));
+});
+
 app.post('/comment',function(req,res){
     var a_id=req.body.articleId;
     var u_id=req.body.userId;
