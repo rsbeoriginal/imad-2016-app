@@ -109,11 +109,12 @@ function createTemplateReq (data,comment,userId,userFullName) {
                         <img src="/ui/blog/res/list_item.jpg" class="left" style="width:48px;height:48px;border-radius:50%;">
                     </span>
                     <input id="txt_comment" type="text" class="form-control" placeholder="Write a comment . . . " style="height:48px" >
-                    <button id="bt-comment" class="btn btn-success right margin-right-left" style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
+                    <button type="button" id="bt-comment" class="btn btn-success right margin-right-left" data-loading-text="Commenting..." style="margin-right:4%;margin-top: 1%;"><strong>Comment</strong></button>
                     <script>
                     console.log(document.getElementById('txt_comment').value);
                     $(document).ready(function() {
                         $("#bt-comment").click(function(){
+                            var $btn = $(this).button('loading');
                             console.log(document.getElementById('txt_comment').value);
                             
                             var request = new XMLHttpRequest();
@@ -140,8 +141,12 @@ function createTemplateReq (data,comment,userId,userFullName) {
                                             location.reload();
                                         }
                                         });  
+                                        
+                                        $btn.button('reset');
+                                        document.getElementById('txt_comment').value="" ,
                                     } else {
                                             alert('Login first to comment on an Article');
+                                            $btn.button('reset');
                                     }
                                 }
                             };
