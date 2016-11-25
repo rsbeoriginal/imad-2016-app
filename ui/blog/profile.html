@@ -94,7 +94,7 @@
                         },
                           dataType:"json",
                           success: function(data) {
-                              $btn.button('reset');
+                              
                             alert('Article successfully posted.');
                             location.reload();
                         }
@@ -102,7 +102,7 @@
                         //clear the old text
                         document.getElementById('txt_post_title').value="";
                         document.getElementById('txt_post_body').value="";
-                        
+                        $btn.button('reset');
                     } else {
                             alert('Login first to comment on an Article');
                             $btn.button('reset');
