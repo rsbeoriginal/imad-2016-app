@@ -9,7 +9,7 @@ function loadLoginForm() {
                         <li><input id="txt_password" type="password" class="form-control" placeholder="Password" ></li>
                         <li><button type="button" id="bt_login" class="btn btn-success" data-loading-text="Signing you in ..."><strong>Sign in</strong></button></li>
                         <li role="separator" class="divider"></li>
-                        <li><small>Don't have an account?</small><br>
+                        <li style="background-color:red;" ><small>Don't have an account?</small><br>
                             <a href="/blog/sign-up">Sign up</a></li>
                       </ul>
         `;
