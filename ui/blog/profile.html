@@ -98,6 +98,10 @@
                             location.reload();
                         }
                         });  
+                        //clear the old text
+                        document.getElementById('txt_post_title').value="";
+                        document.getElementById('txt_post_body').value="";
+                        
                     } else {
                             alert('Login first to comment on an Article');
                     }
