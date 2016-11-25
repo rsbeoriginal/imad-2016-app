@@ -445,16 +445,16 @@ app.post('/post',function(req,res){
     var title=req.body.title;
     var body=req.body.content;
     var u_id=req.body.userId;
-    
-    pool.query(`INSERT INTO "article" (title,body,user_id) VALUES ('${title}','${body}',${u_id});`,function(err,result){
-        if(err){
-            res.status(500).send(err.toString());
-        }else{
-            res.send('Article posted');
-        }
-    });
-    console.log(req.body);
-    res.send(req.body);
+    res.send("Title: "+title+"\tbody: "+body+"\tuserId: "+u_id);
+    // pool.query(`INSERT INTO "article" (title,body,user_id) VALUES ('${title}','${body}',${u_id});`,function(err,result){
+    //     if(err){
+    //         res.status(500).send(err.toString());
+    //     }else{
+    //         res.send('Article posted');
+    //     }
+    // });
+    // console.log(req.body);
+    // res.send(req.body);
 });
 
 app.post('/login', function (req, res) {
