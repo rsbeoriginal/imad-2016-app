@@ -56,7 +56,7 @@
                 <div align="right" class="margin-top-bottom white shadow" style="padding:2%">                	
                     <input id="txt_post_title" type="text" class="form-control" placeholder="Title" style="height:48px" >
                     <input id="txt_post_body" type="text" class="form-control" placeholder="Write your content here" style="height:48px">
-                    <button id="bt-post" class="btn btn-success margin-right-left" style="margin:4%"><strong>Post</strong></button>
+                    <button type="button" id="bt-post" class="btn btn-success margin-right-left" data-loading-text="Posting..." style="margin:4%"><strong>Post</strong></button>
                 </div>
             </div>
                 
@@ -74,7 +74,7 @@
     <script>
     var u_id;
     $("#bt-post").click(function(){
-            
+            var $btn = $(this).button('loading');
             var request = new XMLHttpRequest();
             request.onreadystatechange = function () {
                 if (request.readyState === XMLHttpRequest.DONE) {
@@ -94,6 +94,7 @@
                         },
                           dataType:"json",
                           success: function(data) {
+                              $btn.button('reset');
                             alert('Article successfully posted.');
                             location.reload();
                         }
@@ -104,6 +105,7 @@
                         
                     } else {
                             alert('Login first to comment on an Article');
+                            $btn.button('reset');
                     }
                 }
             };
