@@ -4,12 +4,12 @@ function loadLoginForm() {
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Log in <span class="caret"></span>
                       </button>
-                      <ul class="dropdown-menu">
-                        <li><input id="txt_username" type="text" class="form-control" placeholder="Username "></li>
-                        <li><input id="txt_password" type="password" class="form-control" placeholder="Password" ></li>
-                        <li align="right" ><button type="button" id="bt_login" class="btn btn-success" data-loading-text="Signing you in ..."><strong>Sign in</strong></button></li>
+                      <ul class="dropdown-menu" style="padding:1%;">
+                        <li style="padding: inherit;" ><input id="txt_username" type="text" class="form-control" placeholder="Username "></li>
+                        <li style="padding: inherit;" ><input id="txt_password" type="password" class="form-control" placeholder="Password" ></li>
+                        <li style="padding: inherit;" align="right" ><button type="button" id="bt_login" class="btn btn-success" data-loading-text="Signing you in ..."><strong>Sign in</strong></button></li>
                         <li role="separator" class="divider"></li>
-                        <li style="background-color:red;" ><small>Don't have an account?</small><br>
+                        <li style="background-color:gold;" ><small>Don't have an account?</small><br>
                             <a href="/blog/sign-up">Sign up</a></li>
                       </ul>
         `;
